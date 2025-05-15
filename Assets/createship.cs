@@ -15,22 +15,15 @@ public class createship : MonoBehaviour
             int attemps = 0;
             do
             {
-                float xPos = Mathf.Clamp(Random.Range(-25, 25), -25, 25);
-                float yPos = Mathf.Clamp(Random.Range(-15, 15), -15, 15);
-
-                newPos2D = new Vector2(xPos,yPos );
+                newPos2D = new Vector2(Random.Range(-23, 23), Random.Range(-13, 13));
                 attemps++;
-                
             }
 
 
             while (usedPosition.Contains(newPos2D) && attemps < 100);
             usedPosition.Add(newPos2D);
-            Vector3 randomspawnPOSITION = new Vector3(newPos2D.x, newPos2D.y, 13f);
-            int[] possibleAngles = { 0, 90, 180, 270 };
-            int randomIndex = Random.Range(0, possibleAngles.Length);
-            Quaternion randomRotation = Quaternion.Euler(0, 0, possibleAngles[randomIndex]);
-            Instantiate(ships, randomspawnPOSITION, randomRotation);
+            Vector3 randomspawnPOSITION = new Vector3(Random.Range(-23, 23), Random.Range(-13, 13), Random.Range(13, 13));
+            Instantiate(ships, randomspawnPOSITION, Quaternion.identity);
         }
         
     }
